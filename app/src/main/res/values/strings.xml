@@ -15,5 +15,12 @@ Porque en esta versión todo girará al rededor de la pregunta: ¿Qué habilidad
         \u0009 &#8226; Lugar: Centro Cultural Roberto Cantoral.\n
         \u0009 &#8226; Dirección: Puente Xoco s/n, Xoco, 03330 Ciudad de México, CDMX.</string>
 
+    <string name="loren">loren ipsum dolo loren ipsum dolo
+            &#8226;loren ipsum dolo loren ipsum dolo
+                &#8226; loren ipsum dolo loren ipsum dolo
+         &#8226; loren ipsum dolo loren ipsum dolo
+         &#8226; loren ipsum dolo loren
+    </string>
+
 
 </resources>
