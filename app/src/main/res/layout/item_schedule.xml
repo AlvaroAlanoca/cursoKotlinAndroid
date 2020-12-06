@@ -48,7 +48,7 @@
                 android:ellipsize="end"
                 android:lines="1"/>
             <TextView
-                android:id="@+id/tcItemScheduleConferenceSpeaker"
+                android:id="@+id/tvItemScheduleConferenceSpeaker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Speaker Name"
@@ -58,7 +58,7 @@
                 android:lines="1"
                 />
             <TextView
-                android:id="@+id/idItemScheduleTag"
+                android:id="@+id/tvItemScheduleTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tag"

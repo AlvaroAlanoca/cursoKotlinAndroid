@@ -8,7 +8,7 @@
  en nuestro bnv_menu para q sean iguales-->
     <fragment
         android:id="@+id/navHomeFragment"
-        android:name="com.example.platziconf.ui.fragments.HomeFragment"
+        android:name="com.example.platziconf.view.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/navScheduleFragment"
-        android:name="com.example.platziconf.ui.fragments.ScheduleFragment"
+        android:name="com.example.platziconf.view.ui.fragments.ScheduleFragment"
         android:label="fragment_schedule"
         tools:layout="@layout/fragment_schedule" >
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/navSpeakersFragment"
-        android:name="com.example.platziconf.ui.fragments.SpeakersFragment"
+        android:name="com.example.platziconf.view.ui.fragments.SpeakersFragment"
         android:label="fragment_speakers"
         tools:layout="@layout/fragment_speakers" >
         <action
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/navMapFragment"
-        android:name="com.example.platziconf.ui.fragments.UbicationFragment"
+        android:name="com.example.platziconf.view.ui.fragments.UbicationFragment"
         android:label="fragment_ubication"
         tools:layout="@layout/fragment_ubication" >
         <action
@@ -51,19 +51,19 @@
 <!-- aqui empezamos a crear los dialogs a mano  -->
     <dialog
         android:id="@+id/speakerDetailFragmentDialog"
-        android:name="com.example.platziconf.ui.fragments.SpeakersDetailDialogFragment"
+        android:name="com.example.platziconf.view.ui.fragments.SpeakersDetailDialogFragment"
         android:label="SpeakerDetailFragmentDialog"
         tools:layout="@layout/fragment_speakers_detail_dialog"
         />
     <dialog
         android:id="@+id/scheduleDetailFragmentDialog"
-        android:name="com.example.platziconf.ui.fragments.ScheduleDetailDialogFragment"
+        android:name="com.example.platziconf.view.ui.fragments.ScheduleDetailDialogFragment"
         android:label="ScheduleDetailFragmentDialog"
         tools:layout="@layout/fragment_schedule_detail_dialog"
         />
     <dialog
         android:id="@+id/mapDetailFragmentDialog"
-        android:name="com.example.platziconf.ui.fragments.UbicationDetailDialogFragment"
+        android:name="com.example.platziconf.view.ui.fragments.UbicationDetailDialogFragment"
         android:label="MapDetailFragmentDialog"
         tools:layout="@layout/fragment_ubication_detail_dialog"/>
 

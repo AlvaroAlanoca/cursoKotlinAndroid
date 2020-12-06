@@ -10,7 +10,7 @@ import java.lang.Exception
 class SpeakersViewModel {
 
     val firestoreService = FirestoreService()
-    var listSpeaker: MutableLiveData<List<Speaker>> = MutableLiveData()
+    var listSpeakers: MutableLiveData<List<Speaker>> = MutableLiveData()
     var isLoading = MutableLiveData<Boolean>()
 
 
@@ -23,7 +23,7 @@ class SpeakersViewModel {
 
         firestoreService.getSpeakers(object : Callback<List<Speaker>> {
                override fun onSucces(result: List<Speaker>?) {
-                listSpeaker.postValue(result)
+                listSpeakers.postValue(result)
                 processFinished()
             }
 

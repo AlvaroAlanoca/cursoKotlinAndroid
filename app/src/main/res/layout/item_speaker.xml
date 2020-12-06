@@ -15,12 +15,14 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/ivItemSpeakerImage"
             android:layout_width="match_parent"
             android:layout_height="@dimen/altoImageViewHome"
             android:src="@mipmap/ic_launcher"
             android:layout_margin="10dp"/>
 
         <TextView
+            android:id="@+id/tvItemSpeakerNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -29,6 +31,7 @@
             android:textSize="@dimen/tamañoTitulo"
             android:textStyle="bold" />
         <TextView
+            android:id="@+id/tvItemSpeakerTrabajo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
              android:text="Trabajo Expositor"
