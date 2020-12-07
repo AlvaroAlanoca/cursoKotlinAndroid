@@ -55,7 +55,7 @@ class SpeakersFragment : Fragment() ,SpeakersListener{
         })
         viewModel.isLoading.observe(this.viewLifecycleOwner,Observer<Boolean>{
             if (it !=null) {
-                rlBaseSchedule.visibility = View.INVISIBLE
+                rlBaseSpeaker.visibility = View.INVISIBLE
             }
         })
     }
