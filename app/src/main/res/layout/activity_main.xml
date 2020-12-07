@@ -19,7 +19,7 @@
      </Toolbar>
   </com.google.android.material.appbar.AppBarLayout>
 
-    <!--<RelativeLayout
+  <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
@@ -41,6 +41,6 @@
             android:layout_alignParentBottom="true"
             app:menu="@menu/bnv_menu"/>
 
-    </RelativeLayout>-->
+    </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

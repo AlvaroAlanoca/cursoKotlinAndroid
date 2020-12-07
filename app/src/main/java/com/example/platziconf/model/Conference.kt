@@ -1,5 +1,6 @@
 package com.example.platziconf.model
 
+import java.io.Serializable
 import java.util.*
 
 class Conference {

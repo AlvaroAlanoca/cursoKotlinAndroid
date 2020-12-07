@@ -29,7 +29,6 @@ class FirestoreService {
             .get()
                 //comprobamos q si estemos recibiendo datos
             .addOnSuccessListener { result->
-                //iteramos a travez de todo el resultado
                 for (doc in result){
                     //obtenemos los objetos necesarios de speaker y asi tener todos los spaekrs de la coleccion
                     val list =  result.toObjects(Speaker::class.java)

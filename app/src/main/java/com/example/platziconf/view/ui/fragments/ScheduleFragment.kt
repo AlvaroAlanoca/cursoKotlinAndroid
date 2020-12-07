@@ -5,56 +5,75 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.platziconf.R
+import com.example.platziconf.model.Conference
+import com.example.platziconf.view.adapter.ScheduleAdapter
+import com.example.platziconf.view.adapter.ScheduleListener
+import com.example.platziconf.viewmodel.ScheduleViewModel
+import kotlinx.android.synthetic.main.fragment_schedule.*
+//implementamos el listener
+class ScheduleFragment : Fragment(), ScheduleListener {
+    //creamos dos variables q nos den acceso directo al viewmodel y al adapter(Tambien al firestore)
+    private lateinit var scheduleAdapter: ScheduleAdapter
+    private lateinit var viewModel: ScheduleViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ScheduleFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ScheduleFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_schedule, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ScheduleFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ScheduleFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+/*una instancia de viewmodel   le damos el contexto del fragmento en el que estamos y le dacimos q quemos obtener una instancia del shcedule
+   //esto lo hacemos para poder obtener los metodos q tiene el ViewModel de Schedule
+        //para poder usar viewmodel tenemos q crear la dependencia en el gradle
+        //ver si el View model este heredado en la clase q se este haciendo referencia*/
+        viewModel = ViewModelProviders.of(this).get(ScheduleViewModel::class.java)
+        //obtenemos los datos de firebase
+        viewModel.refresh()
+//creamos una instancia de nuestro adaptador del recycler view donde colocaremos la informacion
+        scheduleAdapter = ScheduleAdapter(this)
+        //le damos atributos a nuestro recyclerview
+        rvSchedule.apply {
+
+            //como se mostrarán las vistas de nuestro RecyclerView
+            layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+            //LE DECIMOS CUAL SERA EL ADAPTADOR
+            adapter = scheduleAdapter
+        }
+        //observar los datos
+        observeViewModel ()
     }
+
+
+    fun observeViewModel(){
+        //hacemos q la lista este observada
+        viewModel.listSchedule.observe(this.viewLifecycleOwner, Observer<List<Conference>> { schedule ->
+            scheduleAdapter.updateData(schedule)
+
+        })
+        //creamos la instancia de tipo boolean como el del viewmodel de schedule
+        //validamos los datos ingresados (controlar cuando los datos terminen de cargar)
+        viewModel.isLoading.observe(this.viewLifecycleOwner,Observer<Boolean>{
+            if (it !=null) {
+                rlBaseSchedule.visibility = View.INVISIBLE
+            }
+        })
+    }
+
+    override fun onConferenceClicked(conference: Conference,position: Int) {
+        //enviamos un objeto
+        var bundle = bundleOf("conference" to conference)
+        //le enviamos a donde queremos que vaya al momento de hacer click y que nos envie el bundle?
+        findNavController().navigate(R.id.scheduleDetailFragmentDialog,bundle)
+    }
+
+
 }

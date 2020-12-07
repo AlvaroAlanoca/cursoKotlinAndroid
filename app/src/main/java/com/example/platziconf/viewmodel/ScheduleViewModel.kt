@@ -1,12 +1,14 @@
 package com.example.platziconf.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.platziconf.model.Conference
 import com.example.platziconf.network.Callback
 import com.example.platziconf.network.FirestoreService
 import java.lang.Exception
 
-class ScheduleViewModel {
+//ersta clase debe heredar de la clase ViewModel
+class ScheduleViewModel : ViewModel (){
     //creamos una instancia de firebase y nos da accso a las funciones creadas
     val firestoreService = FirestoreService()
     //creamos una variable q tendra acceso a la lista q sera almacenada

@@ -13,21 +13,21 @@ import com.example.platziconf.model.Conference
 import com.example.platziconf.model.Speaker
 import java.util.ArrayList
 
-class SpeakerAdapter(val speakersListener: SpeakersListener) :
-    RecyclerView.Adapter<SpeakerAdapter.ViewHolder>() {
+class SpeakerAdapter(val speakersListener: SpeakersListener)
+    :RecyclerView.Adapter<SpeakerAdapter.ViewHolder>() {
     var listSpeaker = ArrayList<Speaker>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SpeakerAdapter.ViewHolder(
-        LayoutInflater.from(parent.context).inflate(
-            R.layout.item_speaker, parent, false
-        )
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(LayoutInflater.from(parent.context).inflate(
+            R.layout.item_speaker, parent, false))
+
+    override fun getItemCount() = listSpeaker.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val speaker = listSpeaker[position] as Speaker
+        val speaker = listSpeaker[position]
 
         holder.tvNombreSpeaker.text = speaker.name
-        holder.tvSpeakerWork.text = speaker.jobtitle
+        holder.tvSpeakerWork.text = speaker.workplace
         //se ultilizara un nuevo componente GLIDE q se debe adicionar en el gradle del modulo ya q la imagen se descargara de un urlk
         // primero enviamos el contexto
         Glide.with(holder.itemView.context)
@@ -44,20 +44,17 @@ class SpeakerAdapter(val speakersListener: SpeakersListener) :
 
         }
 
-    override fun getItemCount() = listSpeaker.size
-
-    fun updateData(data: List<Speaker>) {
-        listSpeaker.clear()
-        listSpeaker.addAll(data)
-        notifyDataSetChanged()
-
-    }
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val ivSpeakerImage = itemView.findViewById<ImageView>(R.id.ivItemSpeakerImage)
         val tvNombreSpeaker = itemView.findViewById<TextView>(R.id.tvItemSpeakerNombre)
         val tvSpeakerWork = itemView.findViewById<TextView>(R.id.tvItemSpeakerTrabajo)
+
+    }
+    fun updateData(data: List<Speaker>) {
+        listSpeaker.clear()
+        listSpeaker.addAll(data)
+        notifyDataSetChanged()
 
     }
 }
