@@ -39,7 +39,7 @@ class ScheduleDetailDialogFragment : DialogFragment() {
         toolbarConference.navigationIcon = ContextCompat.getDrawable(view.context,R.drawable.ic_close)
        //asignamos color al titulo
         toolbarConference.setTitleTextColor(Color.WHITE)
-        //le decimos q al hacer click se cierre
+        //le decimos q al dar click oculte el dialogo
         toolbarConference.setNavigationOnClickListener {
             dismiss()
         }

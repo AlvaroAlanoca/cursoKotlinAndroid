@@ -9,17 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.example.platziconf.R
 import com.example.platziconf.model.Ubication
 import com.google.android.gms.maps.*
-import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 
 
-//creamos dependencia a onmapdeadycallback implementamos los metodos
-class UbicationFragment : Fragment(), OnMapReadyCallback {
+//creamos dependencia a onmapdeadycallback implementamos los metodos al igual q onmarkerclicklistener
+class UbicationFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener  {
 
 
     override fun onCreateView(
@@ -62,5 +60,17 @@ class UbicationFragment : Fragment(), OnMapReadyCallback {
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(smallMarker))
         //agregamos el marcador al mapa
         googleMap?.addMarker(markerOptions)
+        //al hacer esta accion el marcador q tenemos en el mpaa mandara a la funcion onmarkerclick
+        googleMap?.setOnMarkerClickListener (this)
+
+        googleMap?.setMapStyle(MapStyleOptions.loadRawResourceStyle(context,R.raw.custom_map))
     }
+//para poder acceder a esta funcion desde el mapa debemos usar setonmarkerclick
+    override fun onMarkerClick(p0: Marker?): Boolean {
+    //segun el nav_graph podemos saber a donde debe ir al dar click
+            findNavController().navigate(R.id.mapDetailFragmentDialog)
+    return true
+    }
+
+
 }

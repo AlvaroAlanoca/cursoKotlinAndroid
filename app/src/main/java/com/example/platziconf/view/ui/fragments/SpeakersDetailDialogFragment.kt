@@ -55,7 +55,13 @@ class SpeakersDetailDialogFragment :    DialogFragment() {
 
         Glide.with(this).load(speakers.image).apply(RequestOptions.circleCropTransform()).into(ivDetailSpeakerImage)
 
-        ivDetailSpeakerTwitter.setOnClickListener {
+        ivDetailSpeakerTwitter.setOnClickListener{
+            val url = speakers.twitter
+            val uri = Uri.parse("https://twitter.com/"+url)
+            val launchBrowser = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(launchBrowser)
+        }
+        /*ivDetailSpeakerTwitter.setOnClickListener {
             var intent: Intent
             try {
                 context?.packageManager?.getPackageArchiveInfo("com.twitter.android",0)
@@ -67,7 +73,7 @@ class SpeakersDetailDialogFragment :    DialogFragment() {
                 intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/${speakers.twitter}"))
             }
             startActivity(intent)
-        }
+        }*/
 
     }
 
