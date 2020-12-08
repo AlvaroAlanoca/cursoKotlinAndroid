@@ -6,7 +6,7 @@ class Ubication {
     val latitude = 19.362028
     val longitude = -99.166414
     val phone = "+52 55 1519 4670"
-    val website = "https://www.elcatoral.com/"
+    val website = "https://www.elcantoral.com/"
     val photo = "https://lh5.googleusercontent.com/p/AF1QipPj-rZ_uZmMzvQT3iVlA832hei26T_qjFbjYiW6=w408-h270-k-no"
 
 }
