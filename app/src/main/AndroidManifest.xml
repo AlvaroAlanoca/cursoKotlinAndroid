@@ -11,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlatziConf">
+<!--implementamos el meta data de maps-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB6dW95RQ1wnxNvfvPg6rL3rq5oW1aAvYE"/>
+
         <activity android:name=".view.ui.activities.SplashScreenActivity" />
         <activity android:name=".view.ui.activities.MainActivity">
             <intent-filter>
